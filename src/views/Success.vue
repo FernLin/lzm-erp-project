@@ -25,12 +25,12 @@ export default {
       phone: "",
       password: "",
       verifyCode: "",
-      checked: false
+      checked: false,
     };
   },
   methods: {
     download() {
-      console.log("下载APP");
+      console.log("现在下载APP");
     },
   },
 };
