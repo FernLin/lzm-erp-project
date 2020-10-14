@@ -25,7 +25,7 @@ export default {
       phone: "",
       password: "",
       verifyCode: "",
-      checked: false,
+      checked: false
     };
   },
   methods: {
