@@ -1,4 +1,4 @@
-// const path = require("path");
+const path = require("path");
 module.exports = {
   publicPath: "./",
   //编译打包存放的目录默认dist
@@ -41,5 +41,11 @@ module.exports = {
       args[0].title = "林棕梦ERP管理系统";
       return args;
     });
-  }
+  },
+  pluginOptions: {
+	'style-resources-loader': {
+		preProcessor: 'scss',
+		patterns: [path.resolve(__dirname, 'src/style/_variables.scss')]
+	}
+}
 };

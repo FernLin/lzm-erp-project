@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Register from "../views/Register.vue";
-import Success from "../views/Success.vue";
 
 Vue.use(VueRouter);
 
@@ -15,11 +14,6 @@ const routes = [
     path: "/register",
     name: "register",
     component: Register
-  },
-  {
-    path: "/success",
-    name: "success",
-    component: Success
   }
 ];
 

@@ -1,0 +1,21 @@
+/* element-ui主题色变量，固定，请不要乱更改 */
+$--color-primary: #a89fa0;
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+$primary-color: #a89fa0;
+$secondary-color: #8f797b;
+
+// ---------字体色-------------
+$regular-font: #282828; // 常规字体
+$white-color: #fff;
+$white-text: #fff;
+// ---------------------------
+
+// ---------font family---------
+// 以下是样式函数，只要在样式中使用例如 @include font-T1-style(); 就可以获得样式
+// 输入框中占位符文字
+@mixin font-T1-style() {
+    font-family: helvetica;
+    font-size: 13px;
+    color: #d1d1d1;
+}
