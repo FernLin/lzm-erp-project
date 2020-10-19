@@ -1,5 +1,5 @@
 <template>
-	<div class="function-list-container">FunctionList</div>
+	<div class="function-list-container">功能列表页面</div>
 </template>
 
 <script>

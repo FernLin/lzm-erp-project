@@ -1,5 +1,5 @@
 <template>
-	<div class="shop-application-container">ShopApplication</div>
+	<div class="shop-application-container">开店申请页面</div>
 </template>
 
 <script>

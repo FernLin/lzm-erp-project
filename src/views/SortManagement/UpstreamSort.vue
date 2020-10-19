@@ -1,5 +1,5 @@
 <template>
-	<div class="upstreamSort-container">UpstreamSort</div>
+	<div class="upstreamSort-container">上游分类页面</div>
 </template>
 
 <script>

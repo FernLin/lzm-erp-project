@@ -1,5 +1,4 @@
 import reqJsonData from "./axios";
-// 接口文档: https://github.com/found-solutions/CRM-Back-End/tree/develop
 
 export const getVerificationCode = (params) => {
   return reqJsonData

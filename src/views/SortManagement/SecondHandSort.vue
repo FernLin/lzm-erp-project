@@ -1,5 +1,5 @@
 <template>
-	<div class="secondHandSort-container">SecondHandSort</div>
+	<div class="secondHandSort-container">二手分类页面</div>
 </template>
 
 <script>

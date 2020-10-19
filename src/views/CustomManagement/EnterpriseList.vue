@@ -1,5 +1,5 @@
 <template>
-	<div class="enterprise-list-container">EnterpriseList</div>
+	<div class="enterprise-list-container">企业列表页面</div>
 </template>
 
 <script>

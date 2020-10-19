@@ -1,5 +1,5 @@
 <template>
-	<div class="middleSort-container">MiddleSort</div>
+	<div class="middleSort-container">中端分类页面</div>
 </template>
 
 <script>

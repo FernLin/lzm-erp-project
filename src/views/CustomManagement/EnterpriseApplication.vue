@@ -1,5 +1,5 @@
 <template>
-	<div class="enterprise-application-container">EnterpriseApplication</div>
+	<div class="enterprise-application-container">企业申请页面</div>
 </template>
 
 <script>

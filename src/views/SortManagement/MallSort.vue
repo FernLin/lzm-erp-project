@@ -1,5 +1,5 @@
 <template>
-	<div class="mallSort-container">MallSort</div>
+	<div class="mallSort-container">商城分类页面</div>
 </template>
 
 <script>
