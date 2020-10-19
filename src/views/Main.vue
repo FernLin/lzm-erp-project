@@ -1,5 +1,7 @@
 <template>
-    <div class="main-container" v-loading="loading">Main</div>
+    <div class="main-container" v-loading="loading">
+		<router-view />
+	</div>
 </template>
 
 <script>
