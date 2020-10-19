@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 const modulesRouter = [
 	{
 		path: '/',
+		component: () => import('../views/TestPage.vue'),
 		meta: {
 			requiresAuth: true // 路由携带的参数，用于判断当前路由是否需要登录
 		}

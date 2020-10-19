@@ -51,9 +51,12 @@ export default {
             console.log('执行登录方法', this.account, this.password);
             if (this.remember) {
                 console.log('执行操作，存储账户及密码');
-            }
+			}
+			// 调用登录接口成功后跳转至系统主页面
+            this.$router.push({ path: '/' });
         },
         jumpTo(pageName) {
+			// 跳转至对应页面
             this.$router.push({ name: pageName });
         },
     },
@@ -71,7 +74,6 @@ export default {
     .content {
         width: 350px;
         height: 350px;
-        background-color: #ffffff;
         display: flex;
         flex-direction: column;
         justify-content: space-around;

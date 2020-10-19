@@ -6,7 +6,8 @@
 
 <style lang="scss" scoped>
 #app {
-    height: calc(100vh - 16px);
-    width: 100%;
+    height: 100vh;
+	width: 100vw;
+	background-color: $main-background-color;
 }
 </style>
