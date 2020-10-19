@@ -6,15 +6,87 @@ Vue.use(VueRouter);
 const modulesRouter = [
 	{
 		path: '/',
-		component: () => import('../views/TestPage.vue'),
+		component: () => import('../views/FunctionManagement/FunctionList.vue'),
 		meta: {
 			requiresAuth: true // 路由携带的参数，用于判断当前路由是否需要登录
 		}
 	},
 	{
-		path: 'Test',
-		name: 'Test',
-		component: () => import('../views/TestPage.vue'),
+		path: 'FunctionList',
+		name: 'FunctionList',
+		component: () => import('../views/FunctionManagement/FunctionList.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'EnterpriseApplication',
+		name: 'EnterpriseApplication',
+		component: () => import('../views/CustomManagement/EnterpriseApplication.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'EnterpriseList',
+		name: 'EnterpriseList',
+		component: () => import('../views/CustomManagement/EnterpriseList.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'ShopApplication',
+		name: 'ShopApplication',
+		component: () => import('../views/ShopManagement/ShopApplication.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'ShopList',
+		name: 'ShopList',
+		component: () => import('../views/ShopManagement/ShopList.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'UpstreamSort',
+		name: 'UpstreamSort',
+		component: () => import('../views/SortManagement/UpstreamSort.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'MiddleSort',
+		name: 'MiddleSort',
+		component: () => import('../views/SortManagement/MiddleSort.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'MallSort',
+		name: 'MallSort',
+		component: () => import('../views/SortManagement/MallSort.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'AgricultureSort',
+		name: 'AgricultureSort',
+		component: () => import('../views/SortManagement/AgricultureSort.vue'),
+		meta: {
+			requiresAuth: true,
+		}
+	},
+	{
+		path: 'SecondHandSort',
+		name: 'SecondHandSort',
+		component: () => import('../views/SortManagement/SecondHandSort.vue'),
 		meta: {
 			requiresAuth: true,
 		}
