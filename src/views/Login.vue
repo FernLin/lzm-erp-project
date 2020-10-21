@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { userLogin } from '../api/login';
+import { UserLogin } from '../api/userControl';
 export default {
     name: 'Login',
     components: {},
@@ -49,7 +49,7 @@ export default {
                 });
                 return;
             }
-            const res = await userLogin({ username: this.account, password: this.password });
+            const res = await UserLogin({ username: this.account, password: this.password });
             if (!_.isEmpty(res)) {
                 if (this.remember) {
                     console.log('执行操作，存储账户及密码');

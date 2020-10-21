@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import './style/reset.scss';
 import "./plugins/element";
+import './plugins/sweetalert2';
 import _ from './utils/lodash';
 window._ = _;
 
