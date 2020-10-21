@@ -29,7 +29,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://47.99.55.69:8989/centre",
+        target: "http://47.99.55.69:7979/erp",
         changeOrigin: true,
         ws: true,
         pathRewrite: { "^/api": "" }

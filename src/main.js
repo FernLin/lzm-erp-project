@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import './style/reset.scss';
 import "./plugins/element";
+import _ from './utils/lodash';
+window._ = _;
 
 Vue.config.productionTip = false;
 

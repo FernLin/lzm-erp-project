@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import { getVerificationCode, register } from '../api/Register.js';
 export default {
 	name: 'Register',
 	components: {},
