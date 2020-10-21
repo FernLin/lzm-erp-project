@@ -35,9 +35,9 @@ export function setLoginUserInfo(params) {
 	localStorage.setItem(refreshTimeKey, time);
 	localStorage.setItem(loginUsernameKey, params.username);
 	localStorage.setItem(loginPasswordKey, params.password);
-	setCookie(tokenKey, `${res.tokenHead}${res.token}`);
-	setCookie(refreshTokenKey, `${res.tokenHead}${res.token}`);
-	store.commit('setToken', `${res.tokenHead}${res.token}`);
+	setCookie(tokenKey, res.token);
+	setCookie(refreshTokenKey, res.token);
+	store.commit('setToken', res.token);
 	store.commit('setLoginUsername', params.username);
 	store.commit('setLoginPassword', params.password);
 }

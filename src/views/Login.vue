@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { UserLogin } from '../api/userControl';
+import { UserLogin, GetUserInfo } from '../api/userControl';
 import { setLoginUserInfo } from '@/utils/cookie';
 export default {
 	name: 'Login',

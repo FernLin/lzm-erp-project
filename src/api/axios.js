@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from '../store/index';
 import vm from 'vue';
 // import qs from "qs";
 
@@ -13,6 +14,11 @@ axios.interceptors.request.use(
 		// if (config.method === "post") {
 		//   config.data = qs.stringify(config.data);
 		// }
+		const token = store.state.admin_token;
+		if (token) {
+			let getToken = `Bearer ${token}`;
+			config.headers.common['Authorization'] = getToken;
+		}
 		return config;
 	},
 	(error) => {

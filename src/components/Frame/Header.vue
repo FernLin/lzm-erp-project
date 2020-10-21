@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { UserLogout } from '../../api/userControl';
+import { UserLogout, GetUserInfo } from '../../api/userControl';
 import { removeLoginInfo } from '@/utils/cookie';
 export default {
 	name: 'Header',
@@ -28,6 +28,13 @@ export default {
 			userName: 'Admin',
 			logoutImg: require('@/assets/lzm_logout.png'),
 		};
+	},
+	async beforeMount() {
+		const res = await GetUserInfo();
+		if (!_.isEmpty(res)) {
+			this.userName = res.username;
+			this.userAvatar = res.icon;
+		}
 	},
 	methods: {
 		// 退出登录事件
@@ -89,6 +96,7 @@ export default {
 			img {
 				width: 24px;
 				height: 24px;
+				border: 1px solid $avatar-border;
 			}
 		}
 		.logout {

@@ -32,3 +32,14 @@ export const RefreshToken = () => {
 		console.log(err);
 	  });
 };
+
+export const GetUserInfo = () => {
+	return reqJsonData
+	  .fetchGet("/admin/info")
+	  .then((data) => {
+		return data;
+	  })
+	  .catch((err) => {
+		console.log(err);
+	  });
+};
