@@ -1,6 +1,6 @@
 <template>
 	<div :class="['navigation-container', { unfold: isCollapse }]">
-		<el-menu default-active="2" class="el-menu-vertical-demo" @select="jumpTo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :uniqueOpened="true" :collapse="isCollapse">
+		<el-menu :defaultActive="defaultActive" class="el-menu-vertical-demo" @select="jumpTo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :uniqueOpened="true" :collapse="isCollapse">
 			<el-submenu index="FunctionManagement">
 				<template slot="title">
 					<i class="el-icon-s-management"></i>
@@ -55,7 +55,11 @@ export default {
 	data() {
 		return {
 			isCollapse: false,
+			defaultActive: 'FunctionList',
 		};
+	},
+	beforeMount() {
+		if (this.$route.name) this.defaultActive = this.$route.name;
 	},
 	methods: {
 		// 跳转值指定路由页面

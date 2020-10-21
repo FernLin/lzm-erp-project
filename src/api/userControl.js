@@ -20,4 +20,15 @@ export const UserLogout = () => {
 	  .catch((err) => {
 		console.log(err);
 	  });
-  };
+};
+
+export const RefreshToken = () => {
+	return reqJsonData
+	  .fetchGet("/admin/refreshToken")
+	  .then((data) => {
+		return data;
+	  })
+	  .catch((err) => {
+		console.log(err);
+	  });
+};

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import { isTokenEnable, removeLoginInfo } from '../utils/cookie';
 
 Vue.use(VueRouter);
 
@@ -123,4 +124,22 @@ const router = new VueRouter({
 	]
 });
 
+router.beforeEach(async (to, from, next) => {
+	if (to.matched.some(route => route.meta && route.meta.requiresAuth)) {
+		// 1. 检查是否存在token
+		const token = await isTokenEnable();
+		if (!token) {
+			removeLoginInfo();
+			return next({
+				path: '/login'
+			});
+		}
+		if (to.path === '/') {
+			return next();
+		}
+		return next();
+	} else {
+		return next();
+	}
+});
 export default router;
