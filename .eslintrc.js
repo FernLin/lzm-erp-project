@@ -10,9 +10,9 @@ module.exports = {
 	rules: {
 		// ? javascript rules
 		// 开发模式允许使用console
-		'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+		// 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		// 开发环境允许使用调试 (生产模式禁用)
-		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+		// 'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		// 允许使用 async-await
 		'generator-star-spacing': 'off',
 		// 禁止使用 var
