@@ -1,11 +1,11 @@
 <template>
 	<div class="ProductPage-container">
-		<ProductList :industryId="2" />
+		<ProductList :industryId="3" />
 	</div>
 </template>
 
 <script>
-import ProductList from '../../components/Frame/ProductList';
+import ProductList from '../../components/ProductManagement/ProductList';
 export default {
 	name: 'ProductPage',
 	components: { ProductList },

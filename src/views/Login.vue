@@ -4,7 +4,7 @@
 			<img src="@/assets/lzm_login.png" />
 			<div class="detail">
 				<div class="title">
-					<div>欢迎登录林棕梦ERP管理系统</div>
+					<div>欢迎登录林棕梦商家管理后台</div>
 				</div>
 				<el-input class="login-input" placeholder="请输入账号" v-model="account">
 					<img slot="prefix" class="login-image" src="../assets/lzm_username.png" />

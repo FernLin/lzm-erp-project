@@ -2,7 +2,7 @@
 	<div class="header-container">
 		<div class="logo-content">
 			<img src="@/assets/lzm_logo.png" />
-			<span>ERP管理系统</span>
+			<span>商家管理后台</span>
 		</div>
 		<div class="detail-content">
 			<span class="user-content">

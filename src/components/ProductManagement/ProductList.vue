@@ -1,6 +1,17 @@
 <template>
 	<div class="productList-container">
+		<div class="btn-content">
+			<div>
+				<el-button :class="showSale ? 'primary' : 'dark'" @click="handleShowSale">上架中</el-button>
+				<el-button :class="showSale ? 'dark' : 'primary'" @click="handleShowOff">下架中</el-button>
+			</div>
+			<el-button class="primary" @click="handleShowOff" icon="el-icon-plus">发布商品</el-button>
+		</div>
 		<div class="filter-content">
+			<div>
+				<el-button :class="[selectProduct ? 'primary' : 'is-disabled', 'small']" :disabled="!selectProduct" @click="operateProduct('batch')">{{ showSale ? '批量下架' : '批量上架' }}</el-button>
+				<el-button v-show="!showSale" :class="[selectProduct ? 'primary' : 'is-disabled', 'small']" :disabled="!selectProduct" @click="deleteProduct">删除</el-button>
+			</div>
 			<div class="select-content">
 				<span class="label-word">商品分类</span>
 				<el-cascader v-model="productType" :props="productOptions" @change="filterEvent" clearable></el-cascader>
@@ -8,16 +19,8 @@
 					<el-button slot="append" icon="el-icon-search" @click="filterEvent">搜索</el-button>
 				</el-input>
 			</div>
-			<div class="btn-content">
-				<el-button :class="showSale ? 'primary' : 'dark'" @click="handleShowSale">出售中</el-button>
-				<el-button :class="showSale ? 'dark' : 'primary'" @click="handleShowOff">已下架</el-button>
-			</div>
 		</div>
-		<div style="margin-bottom: 10px">
-			<el-button :class="[selectProduct ? 'primary' : 'is-disabled', 'small']" :disabled="!selectProduct" @click="operateProduct('batch')">{{ showSale ? '批量下架' : '批量上架' }}</el-button>
-			<el-button v-show="!showSale" :class="[selectProduct ? 'primary' : 'is-disabled', 'small']" :disabled="!selectProduct" @click="deleteProduct">删除</el-button>
-			<span class="note-word">{{ `（*${showSale ? '批量下架' : '批量上架/删除'}已选中的商品）` }}</span>
-		</div>
+
 		<el-table :data="productList" class="lzm-table" @selection-change="handleSelectionChange">
 			<el-table-column type="selection" width="55"> </el-table-column>
 			<el-table-column prop="pic" label="商品首图" align="center">
@@ -33,7 +36,7 @@
 			<el-table-column label="操作" align="center" width="120">
 				<template slot-scope="scope">
 					<div class="manage-content">
-						<span class="manage">查看</span>
+						<span class="manage">编辑</span>
 						<span class="manage" @click="operateProduct('single', scope.row)">{{ showSale ? '下架' : '上架' }}</span>
 					</div>
 				</template>
@@ -147,14 +150,27 @@ export default {
 		},
 		// 单个/批量——下架/上架商品
 		async operateProduct(type, data) {
-			if (type === 'batch') {
-				const res = await BatchOperateProduct({ ids: this.multipleSelection, publishStatus: this.publishStatus });
-				if (res) this.$message.success(`批量${this.showSale ? '下' : '上'}架商品成功！`);
-			} else {
-				const res = await OperateProduct(data.id, this.publishStatus);
-				if (res) this.$message.success(`${this.showSale ? '下' : '上'}架商品成功！`);
-			}
-			this.filterEvent();
+			this.$swal
+				.fire({
+					title: `确定${this.showSale ? '下' : '上'}架当前商品？`,
+					type: 'warning',
+					showCancelButton: true,
+					focusCancel: true,
+					cancelButtonText: '取消',
+					confirmButtonText: '确认',
+				})
+				.then(async (result) => {
+					if (result.value) {
+						if (type === 'batch') {
+							const res = await BatchOperateProduct({ ids: this.multipleSelection, publishStatus: this.publishStatus });
+							if (res) this.$message.success(`批量${this.showSale ? '下' : '上'}架商品成功！`);
+						} else {
+							const res = await OperateProduct(data.id, this.publishStatus);
+							if (res) this.$message.success(`${this.showSale ? '下' : '上'}架商品成功！`);
+						}
+						this.filterEvent();
+					}
+				});
 		},
 		// 删除商品
 		deleteProduct() {
@@ -196,6 +212,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .productList-container {
+	.btn-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 30px;
+	}
 	.filter-content {
 		display: flex;
 		align-items: center;
@@ -209,12 +231,6 @@ export default {
 				display: inline-block;
 				width: 70px;
 			}
-		}
-		.btn-content {
-			width: 200px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
 		}
 	}
 	.image {
