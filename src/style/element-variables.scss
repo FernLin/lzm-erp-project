@@ -1,6 +1,202 @@
 @import 'variables';
 
+.el-button {
+    height: 30px;
+    min-width: 90px;
+    line-height: 30px;
+    font-weight: normal;
+    display: inline-block;
+    overflow: hidden;
+    width: fit-content;
+    padding: 0 15px;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: $white-text;
+    border: none;
+    border-radius: 5px;
+    appearance: none;
+    box-sizing: border-box;
+
+    &.primary {
+        color: $white-text;
+        background: $primary-color;
+    }
+    &.outline-primary {
+        color: $primary-color;
+        border: 1px solid $primary-color;
+        background: $white-text;
+    }
+    &.danger {
+        color: $white-text;
+        background: $danger-color;
+        &:hover {
+            background: $danger-hover-color;
+        }
+        &:focus {
+            background: $danger-hover-color;
+        }
+    }
+    &.reset {
+        color: $white-text;
+        background: $button-reset-color;
+        &:hover {
+            background: $button-reset-hover-color;
+        }
+        &:focus {
+            background: $button-reset-focus-color;
+        }
+    }
+    &.dark {
+        color: $white-text;
+        background: $button-dark-color;
+        &:hover {
+            background: $button-dark-hover-color;
+        }
+        &:focus {
+            background: $button-dark-focus-color;
+        }
+    }
+    &.green {
+        color: $white-text;
+        background-color: $button-green-color;
+        &:hover {
+            background: $button-green-hover-color;
+        }
+        &:focus {
+            background: $button-green-focus-color;
+        }
+    }
+    &.delete {
+        color: $white-text;
+        background: $button-delete-color;
+        &:hover {
+            background: $button-delete-hover-color;
+        }
+        &:focus {
+            background: $button-delete-focus-color;
+        }
+    }
+    &.bold {
+        font-weight: 600;
+    }
+    &.small {
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+        font-weight: normal;
+    }
+    &.big {
+        height: 40px;
+        line-height: 40px;
+    }
+    &.is-disabled {
+        color: $white-text;
+        background: $button-disable-color;
+        cursor: unset;
+        &:hover {
+            color: $white-text;
+            background: $button-disable-color;
+            border: $button-disable-color;
+        }
+        &:focus {
+            color: $white-text;
+            background: $button-disable-color;
+            border: $button-disable-color;
+        }
+    }
+    &.is-round {
+        padding: 0 20px;
+    }
+}
+
+.el-input {
+    font-size: 13.5px;
+    color: $regular-font;
+    font-weight: normal;
+    .el-input__inner {
+        border: 1px solid $border-color;
+        height: 35px;
+        line-height: 35px;
+        border-radius: 4px;
+    }
+    .el-input__suffix {
+        line-height: 35px;
+    }
+    .el-input__icon {
+        line-height: 35px;
+    }
+}
+
+.el-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
+    & .el-input .el-input__inner {
+        height: 28px;
+        line-height: 28px;
+    }
+}
+
 .el-menu {
     border-right: unset;
     height: 100%;
+}
+
+.el-cascader-menu {
+    height: 300px;
+}
+
+.el-input .el-input__icon {
+    line-height: 40px;
+}
+
+.login-input .el-input__inner {
+    border: unset;
+    border-radius: unset;
+    border-bottom: 1px solid $border-color;
+}
+.login-input .el-input__prefix {
+    top: 9px;
+}
+.login-input {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.lzm-table {
+    border: 1px solid $border-color;
+    & .is-leaf {
+        background-color: $border-color;
+        font-size: 18px;
+        font-weight: bold;
+        color: $regular-font;
+    }
+}
+
+.list-table {
+    & .is-leaf .cell {
+        padding-left: 40px;
+    }
+    & .cell {
+        padding-left: 40px;
+    }
+}
+
+.img-upload .el-upload {
+    border: 1px dashed $border-color;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.img-upload .el-upload:hover {
+    border-color: $link-font;
 }

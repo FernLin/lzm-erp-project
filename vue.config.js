@@ -5,6 +5,8 @@ module.exports = {
   outputDir: "dist",
   // 静态资源存放路径
   assetsDir: "static",
+  // 默认在生成的静态资源文件名中包含hash以控制缓存
+	filenameHashing: true,
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   lintOnSave: false,
   // 设为false打包时不生成.map文件
@@ -29,7 +31,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://47.99.55.69:7979/erp",
+        target: "http://175.24.234.118:7979/erp",
         changeOrigin: true,
         ws: true,
         pathRewrite: { "^/api": "" }

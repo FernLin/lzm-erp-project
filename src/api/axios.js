@@ -45,10 +45,10 @@ axios.interceptors.response.use(
 );
 
 //返回一个Promise(发送post请求)
-export function fetchPost(url, params) {
+export function fetchPost(url, params, config) {
 	return new Promise((resolve, reject) => {
 		axios
-			.post(url, params)
+			.post(url, params, config)
 			.then(
 				(response) => {
 					resolve(response);

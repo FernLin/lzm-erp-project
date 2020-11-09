@@ -10,6 +10,21 @@ import {
 	MenuItem,
 	MenuItemGroup,
 	Submenu,
+	Table,
+	TableColumn,
+	Upload,
+	DatePicker,
+	Row,
+	Col,
+	Pagination,
+	Select,
+	Option,
+	Dialog,
+	Switch,
+	Radio,
+	Cascader,
+	Card,
+	Tooltip
 } from 'element-ui';
 import '../style/element-variables.scss';
 
@@ -22,4 +37,19 @@ Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
 Vue.use(Submenu);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Upload);
+Vue.use(DatePicker);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Pagination);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Dialog);
+Vue.use(Switch);
+Vue.use(Radio);
+Vue.use(Cascader);
+Vue.use(Card);
+Vue.use(Tooltip);
 Vue.prototype.$message = Message;

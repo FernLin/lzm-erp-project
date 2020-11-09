@@ -1,0 +1,37 @@
+@import 'variables';
+
+// 此处为公共样式文件
+
+.swal2-popup {
+    width: unset;
+    .swal2-title {
+        font-size: 24px;
+    }
+    .swal2-styled {
+        font-size: 16px;
+    }
+    .swal2-styled.swal2-cancel {
+        background-color: $button-dark-color;
+    }
+    .swal2-cancel:hover {
+        background-color: $button-dark-hover-color;
+    }
+    .swal2-cancel:focus {
+        background-color: $button-dark-focus-color;
+    }
+    .swal2-styled.swal2-confirm {
+        background-color: $button-green-color;
+    }
+    .swal2-confirm:hover {
+        background-color: $button-green-hover-color;
+    }
+    .swal2-confirm:focus {
+        background-color: $button-green-focus-color;
+    }
+}
+
+.note-word {
+    margin-top: 6px;
+    font-size: 12px;
+    color: $note-font;
+}

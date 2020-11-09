@@ -28,13 +28,15 @@ export default {
 .main-container {
 	height: 100%;
 	.main-content {
-		height: calc(100% - 91px);
+		height: calc(100% - 101px);
 		display: flex;
 		.detail-content {
 			flex: 1;
 			height: 100%;
 			margin: 8px 0 0 8px;
 			background-color: $white-color;
+			padding: 10px 10px 0;
+			overflow-y: auto;
 		}
 	}
 }

@@ -1,5 +1,5 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import { isTokenEnable, removeLoginInfo } from '../utils/cookie';
 
 Vue.use(VueRouter);
@@ -7,131 +7,163 @@ Vue.use(VueRouter);
 const modulesRouter = [
 	{
 		path: '/',
-		component: () => import('../views/FunctionManagement/FunctionList.vue'),
+		component: () => import('../views/EventManagement/Carousel.vue'),
 		meta: {
-			requiresAuth: true // 路由携带的参数，用于判断当前路由是否需要登录
-		}
+			requiresAuth: true, // 路由携带的参数，用于判断当前路由是否需要登录
+		},
 	},
 	{
-		path: 'FunctionList',
-		name: 'FunctionList',
-		component: () => import('../views/FunctionManagement/FunctionList.vue'),
+		path: 'EventManagement-Carousel',
+		name: 'EventManagement-Carousel',
+		component: () => import('../views/EventManagement/Carousel.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'EnterpriseApplication',
-		name: 'EnterpriseApplication',
+		path: 'EventManagement-LimitedTimeSpike',
+		name: 'EventManagement-LimitedTimeSpike',
+		component: () => import('../views/EventManagement/LimitedTimeSpike.vue'),
+		meta: {
+			requiresAuth: true,
+		},
+	},
+	{
+		path: 'CustomManagement-EnterpriseApplication',
+		name: 'CustomManagement-EnterpriseApplication',
 		component: () => import('../views/CustomManagement/EnterpriseApplication.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'EnterpriseList',
-		name: 'EnterpriseList',
+		path: 'CustomManagement-EnterpriseList',
+		name: 'CustomManagement-EnterpriseList',
 		component: () => import('../views/CustomManagement/EnterpriseList.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'ShopApplication',
-		name: 'ShopApplication',
-		component: () => import('../views/ShopManagement/ShopApplication.vue'),
+		path: 'ShopManagement-UpstreamShop',
+		name: 'ShopManagement-UpstreamShop',
+		component: () => import('../views/ShopManagement/UpstreamShop.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'ShopList',
-		name: 'ShopList',
-		component: () => import('../views/ShopManagement/ShopList.vue'),
+		path: 'ShopManagement-AgricultureShop',
+		name: 'ShopManagement-AgricultureShop',
+		component: () => import('../views/ShopManagement/AgricultureShop.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'UpstreamSort',
-		name: 'UpstreamSort',
-		component: () => import('../views/SortManagement/UpstreamSort.vue'),
+		path: 'ShopManagement-SecondHandShop',
+		name: 'ShopManagement-SecondHandShop',
+		component: () => import('../views/ShopManagement/SecondHandShop.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'MiddleSort',
-		name: 'MiddleSort',
-		component: () => import('../views/SortManagement/MiddleSort.vue'),
+		path: 'MallManagement-MallSortPage',
+		name: 'MallManagement-MallSortPage',
+		component: () => import('../views/MallManagement/SortPage.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'MallSort',
-		name: 'MallSort',
-		component: () => import('../views/SortManagement/MallSort.vue'),
+		path: 'MallManagement-MallProductPage',
+		name: 'MallManagement-MallProductPage',
+		component: () => import('../views/MallManagement/ProductPage.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'AgricultureSort',
-		name: 'AgricultureSort',
-		component: () => import('../views/SortManagement/AgricultureSort.vue'),
+		path: 'MallManagement-MallOrderPage',
+		name: 'MallManagement-MallOrderPage',
+		component: () => import('../views/MallManagement/OrderPage.vue'),
 		meta: {
 			requiresAuth: true,
-		}
+		},
 	},
 	{
-		path: 'SecondHandSort',
-		name: 'SecondHandSort',
-		component: () => import('../views/SortManagement/SecondHandSort.vue'),
+		path: 'UpstreamManagement-UpstreamProductPage',
+		name: 'UpstreamManagement-UpstreamProductPage',
+		component: () => import('../views/UpstreamManagement/ProductPage.vue'),
 		meta: {
 			requiresAuth: true,
-		}
-	}
+		},
+	},
+	{
+		path: 'UpstreamManagement-UpstreamOrderPage',
+		name: 'UpstreamManagement-UpstreamOrderPage',
+		component: () => import('../views/UpstreamManagement/OrderPage.vue'),
+		meta: {
+			requiresAuth: true,
+		},
+	},
+	{
+		path: 'MiddleManagement-MiddleProductPage',
+		name: 'MiddleManagement-MiddleProductPage',
+		component: () => import('../views/MiddleManagement/ProductPage.vue'),
+		meta: {
+			requiresAuth: true,
+		},
+	},
+	{
+		path: 'MiddleManagement-MiddleOrderPage',
+		name: 'MiddleManagement-MiddleOrderPage',
+		component: () => import('../views/MiddleManagement/OrderPage.vue'),
+		meta: {
+			requiresAuth: true,
+		},
+	},
 ];
 
 const router = new VueRouter({
 	mode: 'history',
 	routes: [
 		{
-			path: "/",
+			path: '/',
 			component: () => import('../views/Main.vue'),
-			children: modulesRouter
+			children: modulesRouter,
 		},
 		{
-			path: "/register",
-			name: "register",
+			path: '/register',
+			name: 'register',
 			component: () => import('../views/Register.vue'),
 		},
 		{
 			path: '/login',
 			name: 'login',
-			component: () => import('../views/Login.vue')
+			component: () => import('../views/Login.vue'),
 		},
 		{
 			path: '/forget',
 			name: 'forget',
-			component: () => import('../views/Forget.vue')
+			component: () => import('../views/Forget.vue'),
 		},
 		{
 			path: '*',
-			component: () => import('../views/Page404.vue')
-		}
-	]
+			component: () => import('../views/Page404.vue'),
+		},
+	],
 });
 
 router.beforeEach(async (to, from, next) => {
-	if (to.matched.some(route => route.meta && route.meta.requiresAuth)) {
+	if (to.matched.some((route) => route.meta && route.meta.requiresAuth)) {
 		// 1. 检查是否存在token
 		const token = await isTokenEnable();
 		if (!token) {
 			removeLoginInfo();
 			return next({
-				path: '/login'
+				path: '/login',
 			});
 		}
 		if (to.path === '/') {

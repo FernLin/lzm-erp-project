@@ -1,18 +1,44 @@
 /* element-ui主题色变量，固定，请不要乱更改 */
-// $--color-primary: #a89fa0;
+$--color-primary: #28ac5f;
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
 
-$primary-color: #a89fa0;
+$primary-color: #28ac5f;
 $secondary-color: #8f797b;
 $main-background-color: #f7f7f7;
 $white-color: #fff;
-$black-color: #000;
+$black-color: #282828;
 $avatar-border: #dddddd;
+$border-color: #dcdfe6;
+
+$danger-color: #a13341;
+$danger-hover-color: #a53847;
+$button-disable-color: #c7c7c7;
+
+// 按钮底色
+$button-reset-color: #ea6360;
+$button-dark-color: #282828;
+$button-green-color: #56b154;
+$button-delete-color: #d94625;
+
+// 按钮hover底色
+$button-reset-hover-color: #ec7370;
+$button-dark-hover-color: #3e3e3e;
+$button-green-hover-color: #67b965;
+$button-delete-hover-color: #d94625;
+
+// 按钮focus底色
+$button-reset-focus-color: #d25956;
+$button-dark-focus-color: #242424;
+$button-green-focus-color: #4d9f4b;
+$button-delete-focus-color: #c33f21;
 
 // ---------字体色-------------
 $regular-font: #282828; // 常规字体
 $login-font: #409eff;
 $white-text: #fff;
+$link-font: #0000ff; // 超链类型字体
+$note-font: #c7c7c7; // 注释类型字体颜色
+$disable-font: #c7c7c7; // 禁用类型字体颜色
 // ---------------------------
 
 // ---------font family---------
