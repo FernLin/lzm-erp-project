@@ -2,10 +2,10 @@
 	<div class="productList-container">
 		<div class="btn-content">
 			<div>
-				<el-button :class="showSale ? 'primary' : 'dark'" @click="handleShowSale">上架中</el-button>
+				<el-button :class="showSale ? 'primary' : 'dark'" @click="handleShowSale">出售中</el-button>
 				<el-button :class="showSale ? 'dark' : 'primary'" @click="handleShowOff">下架中</el-button>
 			</div>
-			<el-button class="primary" @click="handleShowOff" icon="el-icon-plus">发布商品</el-button>
+			<el-button class="primary" @click="releaseProduct" icon="el-icon-plus">发布商品</el-button>
 		</div>
 		<div class="filter-content">
 			<div>
@@ -36,7 +36,7 @@
 			<el-table-column label="操作" align="center" width="120">
 				<template slot-scope="scope">
 					<div class="manage-content">
-						<span class="manage">编辑</span>
+						<span class="manage" @click="editProduct(scope.row)">编辑</span>
 						<span class="manage" @click="operateProduct('single', scope.row)">{{ showSale ? '下架' : '上架' }}</span>
 					</div>
 				</template>
@@ -147,6 +147,14 @@ export default {
 			this.publishStatus = 0;
 			this.filterEvent();
 			this.showSale = false;
+		},
+		// 发布商品
+		releaseProduct() {
+			this.$emit('releaseProduct');
+		},
+		// 编辑商品
+		editProduct(data) {
+			this.$emit('editProduct', data);
 		},
 		// 单个/批量——下架/上架商品
 		async operateProduct(type, data) {

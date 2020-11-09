@@ -200,3 +200,14 @@
 .img-upload .el-upload:hover {
     border-color: $link-font;
 }
+
+.el-card__header {
+    border-bottom: unset;
+    padding-bottom: 0px;
+}
+
+.el-card__body .el-form-item {
+    &:last-child {
+        margin-bottom: unset;
+    }
+}

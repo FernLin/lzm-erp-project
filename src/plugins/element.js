@@ -24,7 +24,9 @@ import {
 	Radio,
 	Cascader,
 	Card,
-	Tooltip
+	Tooltip,
+	Form,
+	FormItem,
 } from 'element-ui';
 import '../style/element-variables.scss';
 
@@ -52,4 +54,6 @@ Vue.use(Radio);
 Vue.use(Cascader);
 Vue.use(Card);
 Vue.use(Tooltip);
+Vue.use(Form);
+Vue.use(FormItem);
 Vue.prototype.$message = Message;
