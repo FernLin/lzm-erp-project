@@ -27,7 +27,6 @@ export default {
 	},
 	beforeMount() {
 		if (this.$route.name) {
-			console.log('执行了', this.$route.name);
 			this.defaultActive = this.$route.name.toString().split('-')[1];
 		}
 	},

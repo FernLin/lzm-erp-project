@@ -58,7 +58,7 @@ export default {
 					password: this.password,
 				});
 				// 调用登录接口成功后跳转至系统主页面
-				this.$router.push({ path: '/EventManagement-Carousel' });
+				this.$router.push({ path: '/ProductManagement-ProductPage' });
 			}
 		},
 		jumpTo(pageName) {
