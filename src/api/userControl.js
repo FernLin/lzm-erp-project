@@ -2,7 +2,7 @@ import reqJsonData from "./axios";
 
 export const UserLogin = (params) => {
   return reqJsonData
-    .fetchPost("/admin/login", params)
+    .fetchPost("/merchant/login", params)
     .then((data) => {
       return data;
     })
@@ -13,7 +13,7 @@ export const UserLogin = (params) => {
 
 export const UserLogout = () => {
 	return reqJsonData
-	  .fetchPost("/admin/logout")
+	  .fetchPost("/merchant/logout")
 	  .then((data) => {
 		return data;
 	  })
@@ -24,7 +24,7 @@ export const UserLogout = () => {
 
 export const RefreshToken = () => {
 	return reqJsonData
-	  .fetchGet("/admin/refreshToken")
+	  .fetchGet("/merchant/refreshToken")
 	  .then((data) => {
 		return data;
 	  })
@@ -35,7 +35,7 @@ export const RefreshToken = () => {
 
 export const GetUserInfo = () => {
 	return reqJsonData
-	  .fetchGet("/admin/info")
+	  .fetchGet("/merchant/info")
 	  .then((data) => {
 		return data;
 	  })

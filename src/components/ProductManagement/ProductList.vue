@@ -15,7 +15,7 @@
 			<div class="select-content">
 				<span class="label-word">商品分类</span>
 				<el-cascader v-model="productType" :props="productOptions" @change="filterEvent" clearable></el-cascader>
-				<el-input v-model="filterCondition" placeholder="输入商品分类名称" style="width: 330px; margin-left: 10px">
+				<el-input v-model="filterCondition" placeholder="输入商品分类名称" style="width: 320px; margin-left: 10px">
 					<el-button slot="append" icon="el-icon-search" @click="filterEvent">搜索</el-button>
 				</el-input>
 			</div>
@@ -117,6 +117,7 @@ export default {
 				productCategory3Id: this.productType[2],
 				publishStatus: this.publishStatus,
 				industryId: this.industryId,
+				shopId: 38,
 				pageNum: this.currentPage,
 				pageSize: this.pageSize,
 			};

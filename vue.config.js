@@ -31,7 +31,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api": {
-        target: "http://175.24.234.118:7979/erp",
+        target: "http://175.24.234.118:7979/merchant",
         changeOrigin: true,
         ws: true,
         pathRewrite: { "^/api": "" }
@@ -40,7 +40,7 @@ module.exports = {
   },
   chainWebpack: config => {
     config.plugin("html").tap(args => {
-      args[0].title = "林棕梦ERP管理系统";
+      args[0].title = "林棕梦商家管理后台";
       return args;
     });
   },

@@ -4,7 +4,7 @@ import reqJsonData from './axios';
 // 获取商品列表
 export const GetProductList = (params) => {
 	return reqJsonData
-		.fetchPost('/product/getPage', params)
+		.fetchPost('/product/getStatuePageByQueryParam', params)
 		.then((data) => {
 			return data;
 		})
@@ -38,6 +38,18 @@ export const BatchOperateProduct = (params) => {
 export const BatchDeleteProduct = (params) => {
 	return reqJsonData
 		.fetchPost('/product/deleteBatch', params)
+		.then((data) => {
+			return data;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+// 添加商品
+export const CreateProduct = (params) => {
+	return reqJsonData
+		.fetchPost('/product/create', params)
 		.then((data) => {
 			return data;
 		})

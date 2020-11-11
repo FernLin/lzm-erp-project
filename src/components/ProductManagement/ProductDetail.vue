@@ -6,24 +6,24 @@
 				<span>返回</span>
 			</span>
 		</div>
-		<el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+		<el-form :model="formData" :rules="rules" ref="formData" label-width="100px">
 			<el-card shadow="never">
 				<div slot="header" class="my-card-header">
 					<i class="el-icon-collection-tag" />
 					<span>选择商品分类</span>
 				</div>
 				<el-form-item label="一级分类" prop="firstLevel">
-					<el-select v-model="ruleForm.firstLevel" placeholder="请选择一级分类" style="width: 300px" @change="handleChange($event, 'second')">
+					<el-select v-model="formData.firstLevel" placeholder="请选择一级分类" style="width: 300px" @change="handleChange($event, 'second')">
 						<el-option v-for="(item, index) in firstLevelList" :key="index" :label="item.name" :value="item.id"></el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="二级分类" prop="secondLevel">
-					<el-select v-model="ruleForm.secondLevel" :disabled="!ruleForm.firstLevel" placeholder="请选择二级分类" style="width: 300px" @change="handleChange($event, 'thired')">
+					<el-select v-model="formData.secondLevel" :disabled="!formData.firstLevel" placeholder="请选择二级分类" style="width: 300px" @change="handleChange($event, 'thired')">
 						<el-option v-for="(item, index) in secondLevelList" :key="index" :label="item.name" :value="item.id"></el-option>
 					</el-select>
 				</el-form-item>
 				<el-form-item label="三级分类" prop="thiredLevel">
-					<el-select v-model="ruleForm.thiredLevel" :disabled="!ruleForm.secondLevel" placeholder="请选择三级分类" style="width: 300px">
+					<el-select v-model="formData.thiredLevel" :disabled="!formData.secondLevel" placeholder="请选择三级分类" style="width: 300px">
 						<el-option v-for="(item, index) in thiredLevelList" :key="index" :label="item.name" :value="item.id"></el-option>
 					</el-select>
 				</el-form-item>
@@ -34,7 +34,7 @@
 					<span>商品基本信息</span>
 				</div>
 				<el-form-item label="商品标题" prop="title">
-					<el-input v-model="ruleForm.title" placeholder="请输入商品标题" maxlength="30" show-word-limit style="width: 500px"></el-input>
+					<el-input v-model="formData.title" placeholder="请输入商品标题" maxlength="30" show-word-limit style="width: 500px"></el-input>
 				</el-form-item>
 				<el-form-item label="商品规格" prop="specification">
 					<el-input v-model="specification" placeholder="请输入规格名称" style="width: 200px; margin-right: 10px"></el-input>
@@ -49,21 +49,37 @@
 								<span>{{ scope['row'][`${item.propName}`] }}</span>
 							</template>
 						</el-table-column>
-						<el-table-column prop="price" label="销售价格" align="center"> </el-table-column>
-						<el-table-column prop="stock" label="商品库存" align="center"> </el-table-column>
-						<el-table-column prop="lowStock" label="库存预警值" align="center"> </el-table-column>
-						<el-table-column prop="skuCode" label="SKU编码" align="center"> </el-table-column>
+						<el-table-column prop="price" label="销售价格" align="center">
+							<template slot-scope="scope">
+								<el-input v-model="scope.row.price" />
+							</template>
+						</el-table-column>
+						<el-table-column prop="stock" label="商品库存" align="center">
+							<template slot-scope="scope">
+								<el-input v-model="scope.row.stock" />
+							</template>
+						</el-table-column>
+						<el-table-column prop="lowStock" label="库存预警值" align="center">
+							<template slot-scope="scope">
+								<el-input v-model="scope.row.lowStock" />
+							</template>
+						</el-table-column>
+						<el-table-column prop="skuCode" label="SKU编码" align="center">
+							<template slot-scope="scope">
+								<el-input v-model="scope.row.skuCode" />
+							</template>
+						</el-table-column>
 					</el-table>
 				</el-form-item>
 				<el-form-item label="商品图片" prop="imageList">
 					<span class="note-word" style="margin-left: 10px">*上传图片最佳尺寸720*720，图片大小不超过2M，最多可上传5张图片，默认第一张为主图</span>
 					<div class="upload-content">
-						<div v-for="(item, index) in ruleForm.imageList" :key="index" class="image-content">
+						<div v-for="(item, index) in formData.imageList" :key="index" class="image-content">
 							<img :src="item" class="img-show" />
 							<i class="el-icon-error close-icon" @click="deleteAttrVal(item)" />
 						</div>
 						<el-upload
-							v-show="ruleForm.imageList.length < 5"
+							v-show="formData.imageList.length < 5"
 							class="img-upload"
 							accept=".jpg, .png, .bmp"
 							action=""
@@ -78,7 +94,7 @@
 				<el-form-item label="商品详情页" prop="productDetail">
 					<div class="detail-content">
 						<el-upload class="img-upload" accept=".jpg, .png, .bmp" action="" :show-file-list="false" :before-upload="beforeAvatarUpload" :http-request="uploadDetailFile">
-							<img v-if="ruleForm.productDetail" :src="ruleForm.productDetail" class="detail-show" />
+							<img v-if="formData.productDetail" :src="formData.productDetail" class="detail-show" />
 							<i v-else class="el-icon-plus img-upload-icon"></i>
 						</el-upload>
 					</div>
@@ -90,7 +106,7 @@
 					<span>商品活动</span>
 				</div>
 				<el-form-item label="棕苞粒" prop="points">
-					<el-checkbox v-model="ruleForm.points">下单回馈棕苞粒</el-checkbox>
+					<el-checkbox v-model="formData.points">下单回馈棕苞粒</el-checkbox>
 					<span class="note-word" style="margin-left: 10px">*消费金额回馈相应数量棕苞粒，如：消费100则回馈100棕苞粒</span>
 				</el-form-item>
 			</el-card>
@@ -101,16 +117,16 @@
 				</div>
 				<div>
 					<div>
-						<el-radio v-model="ruleForm.server" label="1">统一运费</el-radio>
+						<el-radio v-model="formData.server" label="1">统一运费</el-radio>
 					</div>
 					<div>
-						<el-radio v-model="ruleForm.server" label="2">运费模版</el-radio>
+						<el-radio v-model="formData.server" label="2">运费模版</el-radio>
 					</div>
 				</div>
 			</el-card>
 			<el-form-item>
-				<el-button class="primary" @click="submitForm('ruleForm')">发布商品至出售中</el-button>
-				<el-button class="primary" @click="submitForm('ruleForm')">发布商品至下架中</el-button>
+				<el-button class="primary" @click="submitForm('formData', 1)">发布商品至出售中</el-button>
+				<el-button class="primary" @click="submitForm('formData', 0)">发布商品至下架中</el-button>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -119,6 +135,7 @@
 <script>
 import AttrAdd from '../Frame/AttrAdd';
 import { UploadImg, GetFirstLevelList, GetAllLevelList } from '../../api/common.js';
+import { CreateProduct } from '../../api/management.js';
 export default {
 	name: 'ProductDetail',
 	components: { AttrAdd },
@@ -141,7 +158,10 @@ export default {
 	},
 	data() {
 		return {
-			ruleForm: {
+			productAttributeList: [], //商品规格及自定义规格属性
+			productFeightTemplateRelationList: [], //商品运费关联集合
+			skuStockList: [], //商品的sku库存信息
+			formData: {
 				title: '',
 				firstLevel: '',
 				secondLevel: '',
@@ -172,6 +192,7 @@ export default {
 			attrData: [],
 			tableNameList: [],
 			spanArr: [],
+			tempList: [],
 		};
 	},
 	watch: {
@@ -179,11 +200,11 @@ export default {
 			deep: true,
 			handler(val) {
 				this.spanArr = [];
-				const tempList = val.map((el) => {
+				this.tempList = val.map((el) => {
 					this.spanArr.push(el.value.length);
 					return el.value;
 				});
-				this.attrData = this.getTableData(tempList);
+				this.attrData = this.getTableData(this.tempList);
 			},
 		},
 	},
@@ -213,11 +234,11 @@ export default {
 		async handleChange(e, type) {
 			const res = await GetAllLevelList(e);
 			if (type === 'second') {
-				this.ruleForm.secondLevel = '';
-				this.ruleForm.thiredLevel = '';
+				this.formData.secondLevel = '';
+				this.formData.thiredLevel = '';
 				this.secondLevelList = res;
 			} else {
-				this.ruleForm.thiredLevel = '';
+				this.formData.thiredLevel = '';
 				this.thiredLevelList = res;
 			}
 		},
@@ -268,20 +289,64 @@ export default {
 		async uploadSectionFile(params) {
 			const res = await UploadImg(params.file);
 			if (!_.isEmpty(res)) {
-				this.ruleForm.imageList.push(res);
+				this.formData.imageList.push(res);
 			}
 		},
 		// 上传图片获取图片的url
 		async uploadDetailFile(params) {
 			const res = await UploadImg(params.file);
 			if (!_.isEmpty(res)) {
-				this.ruleForm.productDetail = res;
+				this.formData.productDetail = res;
 			}
 		},
-		submitForm(formName) {
-			this.$refs[formName].validate((valid) => {
+		submitForm(formName, publishStatus) {
+			this.$refs[formName].validate(async (valid) => {
 				if (valid) {
-					alert('submit!');
+					const productAttributeList = this.attrList.map((el) => {
+						return {
+							name: el.name,
+							inputList: _.join(
+								el.value.map((val) => {
+									return val[el.name];
+								}),
+								','
+							),
+						};
+					});
+					const skuData = this.getSKUData(this.tempList);
+					const skuStockList = this.attrData.map((el, index) => {
+						return {
+							price: el.price,
+							stock: el.stock,
+							lowStock: el.lowStock,
+							skuCode: el.skuCode,
+							spData: JSON.stringify(skuData[index]),
+						};
+					});
+					let params = {
+						pmsProductParam: {
+							albumPics: _.join(this.formData.imageList, ','), //画册图片，连产品图片限制为5张，以逗号分割 ,
+							// feightTemplateId: 1, //运费模板id ,
+							industryId: 3, //行业id ,
+							isGiftPoint: this.formData.points ? 1 : 0, //是否赠送积分:0->否；1->是 ,
+							name: this.formData.title, //商品标题 ,
+							pic: this.formData.imageList[0], //商品图片，主图
+							productCategory1Id: this.formData.firstLevel, //商品分类1id ,
+							productCategory1Name: this.getCategoryName(this.formData.firstLevel, this.firstLevelList), //商品分类1名称 ,
+							productCategory2Id: this.formData.secondLevel, //商品分类2id ,
+							productCategory2Name: this.getCategoryName(this.formData.secondLevel, this.secondLevelList), //商品分类2名称
+							productCategory3Id: this.formData.thiredLevel, //商品分类3id ,
+							productCategory3Name: this.getCategoryName(this.formData.thiredLevel, this.thiredLevelList), //商品分类3名称 ,
+							publishStatus: publishStatus, //上架状态：0->下架；1->上架 ,
+							shopId: 38, //店铺id ,
+							unifiedFeight: 0, //统一运费
+						},
+						productAttributeList, //商品规格及自定义规格属性
+						// productFeightTemplateRelationList: 1, //商品运费关联集合
+						skuStockList, //商品的sku库存信息
+					};
+					const res = await CreateProduct(params);
+					console.log(res);
 				} else {
 					return false;
 				}
@@ -353,6 +418,43 @@ export default {
 					}
 				});
 				return result;
+			}
+		},
+		getSKUData(arr) {
+			if (arr.length == 0) return [];
+			if (arr.length == 1) {
+				let res = [];
+				arr[0].forEach((element) => {
+					let newObj = [element];
+					res.push(newObj);
+				});
+				return res;
+			} else {
+				let result = arr.reduce(function (pre, cur) {
+					if (cur.length != 0) {
+						let res = [];
+						for (let i = 0; i < pre.length; i++) {
+							for (let j = 0; j < cur.length; j++) {
+								let newObj = [pre[i], cur[j]];
+								res.push(newObj);
+							}
+						}
+						return res;
+					} else {
+						return pre;
+					}
+				});
+				return result;
+			}
+		},
+		getCategoryName(id, list) {
+			const res = _.find(list, (el) => {
+				return el.id === id;
+			});
+			if (!_.isEmpty(res)) {
+				return res.name;
+			} else {
+				return '';
 			}
 		},
 	},
