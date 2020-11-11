@@ -1,6 +1,6 @@
 <template>
 	<div class="main-container" v-loading="loading">
-		<Header></Header>
+		<!-- <Header></Header> -->
 		<div class="main-content">
 			<NavigationBar></NavigationBar>
 			<div class="detail-content">
