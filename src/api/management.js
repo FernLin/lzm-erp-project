@@ -12,10 +12,43 @@ export const GetProductList = (params) => {
 			console.log(err);
 		});
 };
-// 上架/下架单个商品
-export const OperateProduct = (id, param) => {
+// 上架单个商品
+export const OperateUpProduct = (id, param) => {
 	return reqJsonData
-		.fetchPost(`/product/updatePublishStatus/${id}?publishStatus=${param}`)
+		.fetchPost(`/product/upProduct/${id}`, param)
+		.then((data) => {
+			return data;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+// 下架单个商品
+export const OperateDownProduct = (id, param) => {
+	return reqJsonData
+		.fetchPost(`/product/downProduct/${id}`, param)
+		.then((data) => {
+			return data;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+// 删除单个商品
+export const OperateDelProduct = (id, param) => {
+	return reqJsonData
+		.fetchPost(`/product/deleteProduct/${id}`, param)
+		.then((data) => {
+			return data;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+// 获取商品详细信息
+export const OperateGetProduct = (id, param) => {
+	return reqJsonData
+		.fetchPost(`/product/getItem/${id}`, param)
 		.then((data) => {
 			return data;
 		})

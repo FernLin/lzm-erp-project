@@ -117,10 +117,16 @@
 				</div>
 				<div>
 					<div>
-						<el-radio v-model="formData.server" label="1">统一运费</el-radio>
+						<el-radio v-model="formData.server" label="1" @change="serveChange">统一运费</el-radio>
+						<el-input v-model.trim="formData.unifiedFeight" :disabled="formData.server !== '1'" placeholder="请输入金额" oninput="value=value.replace(/^\.+|[^\d.]/g,'')" style="width: 200px">
+							<span slot="prefix" class="deposit-word">￥</span>
+						</el-input>
 					</div>
-					<div>
-						<el-radio v-model="formData.server" label="2">运费模版</el-radio>
+					<div style="margin-top: 15px">
+						<el-radio v-model="formData.server" label="2" @change="serveChange">运费模版</el-radio>
+						<el-select v-model="formData.feightTemplateId" placeholder="请选择配送费模版" style="width: 300px">
+							<el-option v-for="(item, index) in templateList" :key="index" :label="item.name" :value="item.id"></el-option>
+						</el-select>
 					</div>
 				</div>
 			</el-card>
@@ -167,13 +173,13 @@ export default {
 				secondLevel: '',
 				thiredLevel: '',
 				specification: ['1'],
-				imageList: [
-					'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605037821156&di=cfa2362fea94f339a999c632457166f0&imgtype=0&src=http%3A%2F%2Fattachments.gfan.com%2Fforum%2Fattachments2%2F201304%2F18%2F001339jv88x0qs06vo3qq6.jpg',
-				],
+				imageList: [],
 				pic: '',
 				productDetail: '',
 				points: false,
 				server: '',
+				unifiedFeight: '',
+				feightTemplateId: '',
 			},
 			rules: {
 				firstLevel: [{ required: true, message: '请选一级分类', trigger: 'change' }],
@@ -193,6 +199,7 @@ export default {
 			tableNameList: [],
 			spanArr: [],
 			tempList: [],
+			templateList: [{ name: '测试模版', id: 1 }],
 		};
 	},
 	watch: {
@@ -326,7 +333,7 @@ export default {
 					let params = {
 						pmsProductParam: {
 							albumPics: _.join(this.formData.imageList, ','), //画册图片，连产品图片限制为5张，以逗号分割 ,
-							// feightTemplateId: 1, //运费模板id ,
+							feightTemplateId: this.formData.feightTemplateId, //运费模板id ,
 							industryId: 3, //行业id ,
 							isGiftPoint: this.formData.points ? 1 : 0, //是否赠送积分:0->否；1->是 ,
 							name: this.formData.title, //商品标题 ,
@@ -339,7 +346,7 @@ export default {
 							productCategory3Name: this.getCategoryName(this.formData.thiredLevel, this.thiredLevelList), //商品分类3名称 ,
 							publishStatus: publishStatus, //上架状态：0->下架；1->上架 ,
 							shopId: 38, //店铺id ,
-							unifiedFeight: 0, //统一运费
+							unifiedFeight: this.formData.unifiedFeight, //统一运费
 						},
 						productAttributeList, //商品规格及自定义规格属性
 						// productFeightTemplateRelationList: 1, //商品运费关联集合
@@ -457,6 +464,13 @@ export default {
 				return '';
 			}
 		},
+		serveChange(val) {
+			if (val === '2') {
+				this.formData.unifiedFeight = '';
+			} else {
+				this.formData.feightTemplateId = '';
+			}
+		},
 	},
 };
 </script>
@@ -522,6 +536,13 @@ export default {
 			line-height: 80px;
 			text-align: center;
 		}
+	}
+	.deposit-word {
+		height: 35px;
+		line-height: 35px;
+		font-size: 18px;
+		font-weight: bold;
+		color: $black-color;
 	}
 }
 </style>

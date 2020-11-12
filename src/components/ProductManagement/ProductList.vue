@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { GetProductList, OperateProduct, BatchOperateProduct, BatchDeleteProduct } from '../../api/management.js';
+import { GetProductList, OperateUpProduct, OperateDownProduct, OperateDelProduct, OperateGetProduct, BatchOperateProduct, BatchDeleteProduct } from '../../api/management.js';
 import { GetFirstLevelList, GetAllLevelList } from '../../api/common.js';
 export default {
 	name: 'ProductList',
@@ -154,8 +154,9 @@ export default {
 			this.$emit('releaseProduct');
 		},
 		// 编辑商品
-		editProduct(data) {
-			this.$emit('editProduct', data);
+		async editProduct(data) {
+			const res = await OperateGetProduct(data.id);
+			if (!_.isEmpty(res)) this.$emit('editProduct', res);
 		},
 		// 单个/批量——下架/上架商品
 		async operateProduct(type, data) {
@@ -174,7 +175,11 @@ export default {
 							const res = await BatchOperateProduct({ ids: this.multipleSelection, publishStatus: this.publishStatus });
 							if (res) this.$message.success(`批量${this.showSale ? '下' : '上'}架商品成功！`);
 						} else {
-							const res = await OperateProduct(data.id, this.publishStatus);
+							if (this.showSale) {
+								const res = await OperateDownProduct(data.id);
+							} else {
+								const res = await OperateUpProduct(data.id);
+							}
 							if (res) this.$message.success(`${this.showSale ? '下' : '上'}架商品成功！`);
 						}
 						this.filterEvent();
